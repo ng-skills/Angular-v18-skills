@@ -8,8 +8,6 @@ Skills are structured instructions that help AI agents generate correct, idiomat
 
 ## Installation
 
-### Option 1: Install to `.claude/skills/` (via CLI)
-
 Install all skills:
 
 ```bash
@@ -24,22 +22,16 @@ npx skills add ng-skills/Angular-v18-skills/skills/angular-signals
 npx skills add ng-skills/Angular-v18-skills/skills/angular-routing
 ```
 
-### Option 2: Install to `.github/skills/` (manual)
+The CLI will prompt you to choose which agents to install for. Skills are always installed to the **universal directory** (`.agents/skills/`), and you can additionally select agent-specific directories:
 
-If you prefer storing skills under `.github/` (e.g. for GitHub-centric workflows):
-
-```bash
-git clone https://github.com/ng-skills/Angular-v18-skills.git /tmp/angular-skills
-mkdir -p .github/skills
-cp -r /tmp/angular-skills/skills/* .github/skills/
-rm -rf /tmp/angular-skills
-```
-
-Or add as a git submodule:
-
-```bash
-git submodule add https://github.com/ng-skills/Angular-v18-skills.git .github/skills/angular-v18
-```
+| Agent | Directory |
+|-------|-----------|
+| Universal (all agents) | `.agents/skills/` |
+| Claude Code | `.claude/skills/` |
+| Cursor | `.cursor/skills/` |
+| GitHub Copilot | `.github/copilot/skills/` |
+| Codex | `.codex/skills/` |
+| And 30+ more... | `.<agent>/skills/` |
 
 ## Available Skills
 
