@@ -35,7 +35,7 @@ The CLI will prompt you to choose which agents to install for. Skills are always
 - **Signals** — Reactive state with signal(), computed(), effect(), and RxJS interop
 - **Dependency Injection** — inject() function, hierarchical injectors, InjectionToken
 - **Routing** — Lazy loading, functional guards, resolvers, route parameters
-- **Forms** — Reactive Forms and Template-driven Forms with typed FormGroup and validation
+- **Forms** — Reactive Forms with typed FormGroup and validation
 - **HTTP** — provideHttpClient(), functional interceptors, error handling
 - **Directives** — Attribute and structural directives, host bindings, directive composition
 - **Pipes** — Built-in and custom pipes for template data transformation
