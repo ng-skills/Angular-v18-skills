@@ -1,6 +1,6 @@
 ---
 name: angular-v18
-description: Build Angular v18 applications following official best practices. Covers standalone components, signal-based reactivity, dependency injection, routing, forms, HTTP, directives, pipes, testing, SSR, and tooling. Use for any Angular v18 development task. Do not use APIs from Angular 19+ (linkedSignal, resource, httpResource, Signal Forms, Vitest).
+description: Build Angular v18 applications following official best practices. Covers standalone components, signal-based reactivity, dependency injection, routing, forms, HTTP, directives, pipes, testing, SSR, and tooling. Use for any Angular v18 development task. Do not use APIs from Angular 19+ (linkedSignal, resource, httpResource, Signal Forms, Vitest). Always use signal-based input()/output() instead of decorator-based @Input/@Output. Always use Reactive Forms instead of template-driven forms with ngModel.
 ---
 
 # Angular v18 Components
@@ -50,6 +50,8 @@ export class UserCardComponent {
 
 ## Signal Inputs (Developer Preview)
 
+Always use signal-based `input()` — do NOT use `@Input()` decorator.
+
 ```typescript
 import { input, booleanAttribute, numberAttribute } from '@angular/core';
 
@@ -61,18 +63,9 @@ disabled = input(false, { transform: booleanAttribute });
 value = input(0, { transform: numberAttribute });
 ```
 
-### Decorator-Based Inputs (Stable Alternative)
-
-```typescript
-import { Input, booleanAttribute, numberAttribute } from '@angular/core';
-
-@Input({ required: true }) name!: string;
-@Input() count = 0;
-@Input({ alias: 'buttonSize' }) size = 'medium';
-@Input({ transform: booleanAttribute }) disabled = false;
-```
-
 ## Signal Outputs (Developer Preview)
+
+Always use signal-based `output()` — do NOT use `@Output()` decorator or `EventEmitter`.
 
 ```typescript
 import { output, outputFromObservable } from '@angular/core';
@@ -83,15 +76,6 @@ valueChange = output<number>({ alias: 'change' });
 
 scroll$ = new Subject<number>();
 scrolled = outputFromObservable(this.scroll$);
-```
-
-### Decorator-Based Outputs (Stable Alternative)
-
-```typescript
-import { Output, EventEmitter } from '@angular/core';
-
-@Output() clicked = new EventEmitter<void>();
-@Output('change') valueChange = new EventEmitter<number>();
 ```
 
 ## Two-Way Binding with model() (Developer Preview)
@@ -652,7 +636,7 @@ export const userResolver: ResolveFn<User> = (route) => {
 
 # Angular v18 Forms
 
-Signal Forms are NOT available in v18.
+Signal Forms are NOT available in v18. Always use Reactive Forms — do NOT use template-driven forms (`FormsModule`, `ngModel`).
 
 ## Reactive Forms
 
