@@ -8,6 +8,8 @@ Skills are structured instructions that help AI agents generate correct, idiomat
 
 ## Installation
 
+### Option 1: Install to `.claude/skills/` (via CLI)
+
 Install all skills:
 
 ```bash
@@ -20,6 +22,23 @@ Install a specific skill:
 npx skills add ng-skills/Angular-v18-skills/skills/angular-component
 npx skills add ng-skills/Angular-v18-skills/skills/angular-signals
 npx skills add ng-skills/Angular-v18-skills/skills/angular-routing
+```
+
+### Option 2: Install to `.github/skills/` (manual)
+
+If you prefer storing skills under `.github/` (e.g. for GitHub-centric workflows):
+
+```bash
+git clone https://github.com/ng-skills/Angular-v18-skills.git /tmp/angular-skills
+mkdir -p .github/skills
+cp -r /tmp/angular-skills/skills/* .github/skills/
+rm -rf /tmp/angular-skills
+```
+
+Or add as a git submodule:
+
+```bash
+git submodule add https://github.com/ng-skills/Angular-v18-skills.git .github/skills/angular-v18
 ```
 
 ## Available Skills
