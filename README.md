@@ -11,15 +11,15 @@ Skills are structured instructions that help AI agents generate correct, idiomat
 Install all skills:
 
 ```bash
-npx skills add AssafGolani/Angular-v18-skills
+npx skills add <your-org>/Angular-v18-skills
 ```
 
 Install a specific skill:
 
 ```bash
-npx skills add AssafGolani/Angular-v18-skills/skills/angular-component
-npx skills add AssafGolani/Angular-v18-skills/skills/angular-signals
-npx skills add AssafGolani/Angular-v18-skills/skills/angular-routing
+npx skills add <your-org>/Angular-v18-skills/skills/angular-component
+npx skills add <your-org>/Angular-v18-skills/skills/angular-signals
+npx skills add <your-org>/Angular-v18-skills/skills/angular-routing
 ```
 
 ## Available Skills
