@@ -8,18 +8,8 @@ Skills are structured instructions that help AI agents generate correct, idiomat
 
 ## Installation
 
-Install all skills:
-
 ```bash
 npx skills add ng-skills/Angular-v18-skills
-```
-
-Install a specific skill:
-
-```bash
-npx skills add ng-skills/Angular-v18-skills/skills/angular-component
-npx skills add ng-skills/Angular-v18-skills/skills/angular-signals
-npx skills add ng-skills/Angular-v18-skills/skills/angular-routing
 ```
 
 The CLI will prompt you to choose which agents to install for. Skills are always installed to the **universal directory** (`.agents/skills/`), and you can additionally select agent-specific directories:
@@ -33,21 +23,25 @@ The CLI will prompt you to choose which agents to install for. Skills are always
 | Codex | `.codex/skills/` |
 | And 30+ more... | `.<agent>/skills/` |
 
-## Available Skills
+## Skill
 
 | Skill | Description |
 |-------|-------------|
-| [angular-component](skills/angular-component/) | Standalone components with signal inputs/outputs (developer preview), built-in control flow, and OnPush change detection |
-| [angular-signals](skills/angular-signals/) | Reactive state management with signal(), computed(), effect(), and RxJS interop |
-| [angular-di](skills/angular-di/) | Dependency injection with inject() function, hierarchical injectors, and InjectionToken |
-| [angular-routing](skills/angular-routing/) | Routing with lazy loading, functional guards, resolvers, and route parameters |
-| [angular-forms](skills/angular-forms/) | Reactive Forms and Template-driven Forms with typed FormGroup and validation |
-| [angular-http](skills/angular-http/) | HttpClient with provideHttpClient(), functional interceptors, and error handling |
-| [angular-directives](skills/angular-directives/) | Attribute and structural directives with host bindings and directive composition |
-| [angular-pipes](skills/angular-pipes/) | Built-in and custom pipes for template data transformation |
-| [angular-testing](skills/angular-testing/) | TestBed, component testing, service testing, and HttpClient testing |
-| [angular-ssr](skills/angular-ssr/) | Server-side rendering with hydration, event replay, and prerendering |
-| [angular-tooling](skills/angular-tooling/) | Angular CLI commands, workspace configuration, and build optimization |
+| [angular-v18](skills/angular-v18/) | Comprehensive Angular v18 development — components, signals, DI, routing, forms, HTTP, directives, pipes, testing, SSR, and tooling |
+
+### Topics Covered
+
+- **Components** — Standalone components with signal inputs/outputs, built-in control flow, OnPush change detection
+- **Signals** — Reactive state with signal(), computed(), effect(), and RxJS interop
+- **Dependency Injection** — inject() function, hierarchical injectors, InjectionToken
+- **Routing** — Lazy loading, functional guards, resolvers, route parameters
+- **Forms** — Reactive Forms and Template-driven Forms with typed FormGroup and validation
+- **HTTP** — provideHttpClient(), functional interceptors, error handling
+- **Directives** — Attribute and structural directives, host bindings, directive composition
+- **Pipes** — Built-in and custom pipes for template data transformation
+- **Testing** — TestBed, component testing, service testing, HttpClient testing
+- **SSR** — Server-side rendering with hydration, event replay, prerendering
+- **Tooling** — Angular CLI, workspace configuration, build optimization
 
 ## Angular v18 Highlights
 
