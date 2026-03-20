@@ -29,19 +29,23 @@ The CLI will prompt you to choose which agents to install for. Skills are always
 |-------|-------------|
 | [angular-v18](skills/angular-v18/) | Comprehensive Angular v18 development — components, signals, DI, routing, forms, HTTP, directives, pipes, testing, SSR, and tooling |
 
-### Topics Covered
+### Reference Files
 
-- **Components** — Standalone components with signal inputs/outputs, built-in control flow, OnPush change detection
-- **Signals** — Reactive state with signal(), computed(), effect(), and RxJS interop
-- **Dependency Injection** — inject() function, hierarchical injectors, InjectionToken
-- **Routing** — Lazy loading, functional guards, resolvers, route parameters
-- **Forms** — Reactive Forms with typed FormGroup and validation
-- **HTTP** — provideHttpClient(), functional interceptors, error handling
-- **Directives** — Attribute and structural directives, host bindings, directive composition
-- **Pipes** — Built-in and custom pipes for template data transformation
-- **Testing** — TestBed, component testing, service testing, HttpClient testing
-- **SSR** — Server-side rendering with hydration, event replay, prerendering
-- **Tooling** — Angular CLI, workspace configuration, build optimization
+The skill uses a modular structure where `SKILL.md` acts as a routing guide and each reference file covers a specific topic:
+
+| Reference | Description |
+|-----------|-------------|
+| [components.md](skills/angular-v18/references/components.md) | Standalone components, inputs, outputs, host bindings, control flow, deferrable views, content projection, accessibility |
+| [signals.md](skills/angular-v18/references/signals.md) | signal(), computed(), effect(), RxJS interop, state management patterns |
+| [dependency-injection.md](skills/angular-v18/references/dependency-injection.md) | inject() function, InjectionToken, providers, application config |
+| [routing.md](skills/angular-v18/references/routing.md) | Lazy loading, functional guards, resolvers, view transitions |
+| [forms.md](skills/angular-v18/references/forms.md) | Reactive Forms, typed forms, validators, ControlValueAccessor |
+| [http.md](skills/angular-v18/references/http.md) | provideHttpClient(), functional interceptors, caching, retry |
+| [directives.md](skills/angular-v18/references/directives.md) | Attribute/structural directives, directive composition API |
+| [pipes.md](skills/angular-v18/references/pipes.md) | Built-in and custom pipes for template data transformation |
+| [testing.md](skills/angular-v18/references/testing.md) | TestBed, component/service/guard testing, component harnesses |
+| [ssr.md](skills/angular-v18/references/ssr.md) | Server-side rendering, hydration, event replay, transfer state |
+| [tooling.md](skills/angular-v18/references/tooling.md) | Angular CLI, esbuild + Vite builder, project structure, migrations |
 
 ## Angular v18 Highlights
 
