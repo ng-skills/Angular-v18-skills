@@ -1,6 +1,6 @@
 # Angular v18 Components
 
-All components are standalone by default in Angular v18. Do NOT use NgModules for new code.
+In Angular v18 you must explicitly set `standalone: true` on every component, directive, and pipe. The standalone default (where you can omit it) was introduced in Angular 19. Do NOT use NgModules for new code.
 
 ## Component Structure
 
@@ -9,6 +9,7 @@ import { Component, ChangeDetectionStrategy, input, output, computed } from '@an
 
 @Component({
   selector: 'app-user-card',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'user-card',
@@ -43,7 +44,7 @@ export class UserCardComponent {
 }
 ```
 
-## Signal Inputs (Developer Preview)
+## Signal Inputs (Developer Preview in v18, Stable in v19)
 
 Always use signal-based `input()` — do NOT use `@Input()` decorator.
 
@@ -58,7 +59,7 @@ disabled = input(false, { transform: booleanAttribute });
 value = input(0, { transform: numberAttribute });
 ```
 
-## Signal Outputs (Developer Preview)
+## Signal Outputs (Developer Preview in v18, Stable in v19)
 
 Always use signal-based `output()` — do NOT use `@Output()` decorator or `EventEmitter`.
 
@@ -73,13 +74,14 @@ scroll$ = new Subject<number>();
 scrolled = outputFromObservable(this.scroll$);
 ```
 
-## Two-Way Binding with model() (Developer Preview)
+## Two-Way Binding with model() (Developer Preview in v18, Stable in v19)
 
 ```typescript
 import { model } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
+  standalone: true,
   template: `
     <button (click)="decrement()">-</button>
     <span>{{ value() }}</span>
@@ -103,6 +105,7 @@ Use the `host` metadata object — do NOT use `@HostBinding` or `@HostListener` 
 ```typescript
 @Component({
   selector: 'app-button',
+  standalone: true,
   host: {
     'role': 'button',
     '[class.primary]': 'variant() === "primary"',
@@ -179,6 +182,7 @@ Use native control flow — do NOT use `*ngIf`, `*ngFor`, `*ngSwitch`.
 ```typescript
 @Component({
   selector: 'app-card',
+  standalone: true,
   template: `
     <header>
       <ng-content select="[card-header]" />
@@ -202,7 +206,7 @@ export class CardComponent {}
 </ng-content>
 ```
 
-## View Queries (Developer Preview)
+## View Queries (Developer Preview in v18, Stable in v19)
 
 ```typescript
 import { viewChild, viewChildren, contentChild, contentChildren } from '@angular/core';
@@ -245,6 +249,7 @@ Do NOT use `ngClass` or `ngStyle`. Use direct bindings:
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
+  standalone: true,
   imports: [NgOptimizedImage],
   template: `<img ngSrc="/assets/hero.jpg" width="800" height="600" priority />`,
 })
@@ -258,6 +263,7 @@ Components MUST include proper ARIA attributes, keyboard navigation, and visible
 ```typescript
 @Component({
   selector: 'app-toggle',
+  standalone: true,
   host: {
     'role': 'switch',
     '[attr.aria-checked]': 'checked()',
@@ -290,6 +296,7 @@ export class ToggleComponent {
 // Container — handles data and logic
 @Component({
   selector: 'app-user-list-page',
+  standalone: true,
   imports: [UserListComponent],
   template: `
     @if (loading()) {
@@ -315,6 +322,7 @@ export class UserListPageComponent {
 // Presentational — pure display
 @Component({
   selector: 'app-user-list',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @for (user of users(); track user.id) {
@@ -333,6 +341,7 @@ export class UserListComponent {
 ```typescript
 @Component({
   selector: 'app-confirm-dialog',
+  standalone: true,
   host: {
     'role': 'dialog',
     '[attr.aria-modal]': 'true',
@@ -366,6 +375,7 @@ export class ConfirmDialogComponent {
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
+  standalone: true,
   animations: [
     trigger('expand', [
       transition(':enter', [
@@ -391,6 +401,7 @@ export class ExpandableComponent {
 ```typescript
 @Component({
   selector: 'app-data-table',
+  standalone: true,
   template: `
     <table>
       <thead><tr>

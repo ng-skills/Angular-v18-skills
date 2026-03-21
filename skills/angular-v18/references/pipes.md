@@ -1,6 +1,6 @@
 # Angular v18 Pipes
 
-Pipes transform data in templates. All custom pipes are standalone by default.
+Pipes transform data in templates. All custom pipes must have `standalone: true` explicitly set (default only in Angular 19+).
 
 ## Built-in Pipes
 
@@ -19,7 +19,7 @@ import { DatePipe, CurrencyPipe, DecimalPipe, PercentPipe, AsyncPipe } from '@an
 ## Custom Pipe
 
 ```typescript
-@Pipe({ name: 'truncate' })
+@Pipe({ standalone: true, name: 'truncate' })
 export class TruncatePipe implements PipeTransform {
   transform(value: string, limit = 50, trail = '...'): string {
     if (!value || value.length <= limit) return value || '';
@@ -39,7 +39,7 @@ Prefer `computed()` for component-specific transformations. Use pipes for generi
 ### Safe URL Pipe
 
 ```typescript
-@Pipe({ name: 'safeUrl' })
+@Pipe({ standalone: true, name: 'safeUrl' })
 export class SafeUrlPipe implements PipeTransform {
   private sanitizer = inject(DomSanitizer);
   transform(url: string): SafeResourceUrl {
@@ -51,7 +51,7 @@ export class SafeUrlPipe implements PipeTransform {
 ### Highlight Search Term
 
 ```typescript
-@Pipe({ name: 'highlight' })
+@Pipe({ standalone: true, name: 'highlight' })
 export class HighlightPipe implements PipeTransform {
   transform(text: string, search: string): string {
     if (!search || !text) return text;
@@ -64,7 +64,7 @@ export class HighlightPipe implements PipeTransform {
 ### Relative Time with Intl
 
 ```typescript
-@Pipe({ name: 'relativeTime' })
+@Pipe({ standalone: true, name: 'relativeTime' })
 export class RelativeTimePipe implements PipeTransform {
   private rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 

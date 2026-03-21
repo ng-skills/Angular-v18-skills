@@ -54,8 +54,14 @@ Angular v18 (released May 2024) stabilized several key APIs:
 - **Built-in control flow** (`@if`, `@for`, `@switch`) — stable
 - **Deferrable views** (`@defer`) — stable
 - **Signals** (`signal()`, `computed()`) — stable
-- **Signal inputs/outputs** (`input()`, `output()`) — developer preview
-- **Standalone components** — default for new projects
+- **Signal inputs/outputs/model/queries** (`input()`, `output()`, `model()`, `viewChild()`) — developer preview (stable in v19)
+- **effect()** — developer preview (stable in v20)
+- **Standalone components** — requires explicit `standalone: true` (became default in v19)
+- **ng-content fallback content** — stable (new in v18)
+- **Route redirects as functions** — stable (new in v18)
+- **Form events** (`control.events`) — stable (new in v18)
+- **Zoneless change detection** — experimental
+- **`@let` syntax** — developer preview (v18.1, stable in v19)
 - **Zoneless change detection** — experimental preview
 
 ### APIs NOT available in Angular v18

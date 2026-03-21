@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
 
 // app.component.ts
 @Component({
+  standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
     <nav>

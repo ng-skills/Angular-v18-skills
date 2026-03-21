@@ -9,7 +9,7 @@ description: Build Angular v18 applications following official best practices. C
 
 2. When generating code, follow Angular's style guide and best practices. Use the Angular CLI for scaffolding components, services, directives, pipes, and routes.
 
-3. All components, directives, and pipes are **standalone by default** — do NOT use NgModules for new code.
+3. All components, directives, and pipes must have **`standalone: true`** explicitly set (this only became the default in Angular 19). Do NOT use NgModules for new code.
 
 4. Always use signal-based `input()` / `output()` — do NOT use `@Input()` / `@Output()` decorators.
 

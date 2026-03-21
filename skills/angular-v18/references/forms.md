@@ -8,6 +8,7 @@ Signal Forms are NOT available in v18. Always use Reactive Forms — do NOT use 
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
+  standalone: true,
   imports: [ReactiveFormsModule],
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -77,6 +78,7 @@ this.form.events.subscribe(event => {
 ```typescript
 @Component({
   selector: 'app-star-rating',
+  standalone: true,
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: StarRatingComponent, multi: true }],
   template: `
     @for (star of stars(); track $index) {
@@ -104,6 +106,7 @@ export class StarRatingComponent implements ControlValueAccessor {
 
 ```typescript
 @Component({
+  standalone: true,
   imports: [ReactiveFormsModule],
   template: `
     <form [formGroup]="form" (ngSubmit)="submit()">

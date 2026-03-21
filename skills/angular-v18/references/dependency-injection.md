@@ -24,6 +24,7 @@ export class AuthService { }
 
 // Component-level (per instance)
 @Component({
+  standalone: true,
   providers: [FormValidationService],
 })
 export class FormComponent {
@@ -118,6 +119,7 @@ export class FormStateService {
 }
 
 @Component({
+  standalone: true,
   providers: [FormStateService], // Each instance gets its own
 })
 export class FormComponent {
