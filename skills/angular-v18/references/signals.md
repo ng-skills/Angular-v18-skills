@@ -201,22 +201,48 @@ export class AppStore {
 
 ### Debounced Signal
 
+`toSignal()` and `toObservable()` require an injection context. Either call from a constructor/field initializer, or pass an explicit injector:
+
 ```typescript
-function debouncedSignal<T>(source: Signal<T>, debounceMs: number): Signal<T> {
+// Option A: Use directly in a component/service field initializer (has injection context)
+@Component({...})
+export class SearchComponent {
+  query = signal('');
+  debouncedQuery = toSignal(
+    toObservable(this.query).pipe(debounceTime(300)),
+    { initialValue: '' }
+  );
+}
+
+// Option B: Factory function with explicit injector
+function debouncedSignal<T>(source: Signal<T>, debounceMs: number, injector: Injector): Signal<T> {
   return toSignal(
-    toObservable(source).pipe(debounceTime(debounceMs)),
-    { initialValue: source() }
+    toObservable(source, { injector }).pipe(debounceTime(debounceMs)),
+    { initialValue: source(), injector }
   );
 }
 ```
 
 ### Persisted Signal
 
+`effect()` requires an injection context. Either call from a constructor, or pass an explicit injector:
+
 ```typescript
-function persistedSignal<T>(key: string, initialValue: T): WritableSignal<T> {
+// Option A: Use directly in a constructor
+@Component({...})
+export class SettingsComponent {
+  theme = signal(localStorage.getItem('theme') ?? 'light');
+
+  constructor() {
+    effect(() => { localStorage.setItem('theme', this.theme()); });
+  }
+}
+
+// Option B: Factory function with explicit injector
+function persistedSignal<T>(key: string, initialValue: T, injector: Injector): WritableSignal<T> {
   const stored = localStorage.getItem(key);
   const sig = signal<T>(stored ? JSON.parse(stored) : initialValue);
-  effect(() => { localStorage.setItem(key, JSON.stringify(sig())); });
+  effect(() => { localStorage.setItem(key, JSON.stringify(sig())); }, { injector });
   return sig;
 }
 ```
