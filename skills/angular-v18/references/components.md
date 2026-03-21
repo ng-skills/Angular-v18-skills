@@ -44,7 +44,7 @@ export class UserCardComponent {
 }
 ```
 
-## Signal Inputs (Stable in v18)
+## Signal Inputs (Developer Preview in v18, Stable in v19)
 
 Always use signal-based `input()` — do NOT use `@Input()` decorator.
 
@@ -59,7 +59,7 @@ disabled = input(false, { transform: booleanAttribute });
 value = input(0, { transform: numberAttribute });
 ```
 
-## Signal Outputs (Stable in v18)
+## Signal Outputs (Developer Preview in v18, Stable in v19)
 
 Always use signal-based `output()` — do NOT use `@Output()` decorator or `EventEmitter`.
 
@@ -74,7 +74,7 @@ scroll$ = new Subject<number>();
 scrolled = outputFromObservable(this.scroll$);
 ```
 
-## Two-Way Binding with model() (Stable in v18)
+## Two-Way Binding with model() (Developer Preview in v18, Stable in v19)
 
 ```typescript
 import { model } from '@angular/core';
@@ -206,7 +206,7 @@ export class CardComponent {}
 </ng-content>
 ```
 
-## View Queries (Stable in v18)
+## View Queries (Developer Preview in v18, Stable in v19)
 
 ```typescript
 import { viewChild, viewChildren, contentChild, contentChildren } from '@angular/core';
