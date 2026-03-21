@@ -1,12 +1,13 @@
 # Angular v18 Directives
 
-All directives are standalone by default. Use `host` metadata for bindings.
+All directives must have `standalone: true` explicitly set (default only in Angular 19+). Use `host` metadata for bindings.
 
 ## Attribute Directive
 
 ```typescript
 @Directive({
   selector: '[appHighlight]',
+  standalone: true,
   host: {
     '(mouseenter)': 'onMouseEnter()',
     '(mouseleave)': 'onMouseLeave()',
@@ -24,7 +25,7 @@ export class HighlightDirective {
 ## Structural Directive
 
 ```typescript
-@Directive({ selector: '[appPermission]' })
+@Directive({ selector: '[appPermission]', standalone: true })
 export class PermissionDirective {
   appPermission = input.required<string>();
   private templateRef = inject(TemplateRef);
@@ -48,6 +49,7 @@ export class PermissionDirective {
 ```typescript
 @Component({
   selector: 'app-chip',
+  standalone: true,
   hostDirectives: [
     FocusableDirective,
     { directive: DisableableDirective, inputs: ['disabled'] },
@@ -64,7 +66,7 @@ export class ChipComponent {}
 ### Intersection Observer
 
 ```typescript
-@Directive({ selector: '[appInView]' })
+@Directive({ selector: '[appInView]', standalone: true })
 export class InViewDirective {
   appInView = output<boolean>();
   private el = inject(ElementRef);
@@ -87,6 +89,7 @@ export class InViewDirective {
 ```typescript
 @Directive({
   selector: 'input[appDebounce]',
+  standalone: true,
   host: { '(input)': 'onInput($event)' },
 })
 export class DebounceDirective {
@@ -108,6 +111,7 @@ export class DebounceDirective {
 ```typescript
 @Component({
   selector: 'app-interactive-card',
+  standalone: true,
   hostDirectives: [
     { directive: FocusableDirective },
     { directive: RippleDirective, inputs: ['appRipple'] },

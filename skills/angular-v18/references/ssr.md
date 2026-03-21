@@ -44,6 +44,7 @@ export class MapComponent {
 
 ```typescript
 @Component({
+  standalone: true,
   host: { 'ngSkipHydration': '' },
 })
 export class ChartComponent {}
