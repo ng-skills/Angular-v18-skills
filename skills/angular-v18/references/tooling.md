@@ -47,6 +47,21 @@ src/app/
 ng add @angular-eslint/schematics
 ```
 
+## TypeScript `isolatedModules` (v18.2+)
+
+Enables up to ~10% faster production builds. When enabled with the application builder (and script sourcemaps disabled), TypeScript code is transpiled via esbuild instead of TypeScript's own compiler, allowing esbuild to optimize constructs like enums and removing Babel-based optimization passes for TypeScript code.
+
+```json
+{
+  "compilerOptions": {
+    "isolatedModules": true,
+    "useDefineForClassFields": true
+  }
+}
+```
+
+**Important:** `useDefineForClassFields` should be `true` (or removed) to ensure optimal output code size. The `isolatedModules` option ensures TypeScript code can be safely transpiled without the type-checker.
+
 ## Bundle Optimization
 
 ```typescript
