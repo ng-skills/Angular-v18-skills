@@ -369,26 +369,33 @@ export class ConfirmDialogComponent {
 }
 ```
 
-### Component with Animations
+### Component with CSS Animations
+
+Prefer native CSS animations over `@angular/animations` — they are more performant, don't require an extra package, and Angular's animation module may be deprecated in future versions.
 
 ```typescript
-import { trigger, transition, style, animate } from '@angular/animations';
-
 @Component({
+  selector: 'app-expandable',
   standalone: true,
-  animations: [
-    trigger('expand', [
-      transition(':enter', [
-        style({ height: '0', opacity: 0 }),
-        animate('200ms ease-out', style({ height: '*', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        animate('200ms ease-in', style({ height: '0', opacity: 0 })),
-      ]),
-    ]),
-  ],
   template: `
-    @if (expanded()) { <div @expand><ng-content /></div> }
+    <div class="expandable" [class.expanded]="expanded()">
+      <ng-content />
+    </div>
+  `,
+  styles: `
+    .expandable {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 200ms ease-out, opacity 200ms ease-out;
+    }
+    .expandable > * {
+      overflow: hidden;
+    }
+    .expandable.expanded {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
   `,
 })
 export class ExpandableComponent {
